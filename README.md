@@ -75,7 +75,7 @@ Everyone on your team should add their name along with a link to their GitHub
 your repo access and to practice PR'ing with your team _before_ you start
 coding!
 
-- Ogechi Ogharandukun #1: [GitHub](https://github.com/Mide02-Project)) / [LinkedIn][(http://www.linkedin.com/in/Ogechi-Ogharandukun)]
+- Ogechi Ogharandukun #1: [GitHub](https://github.com/Mide02-Project)) / [LinkedIn](http://www.linkedin.com/in/Ogechi-Ogharandukun)
 - Peter Kabamba #2: [GitHub](https://github.com/Pietrols) / [LinkedIn](linkedin.com/in/peter-kabamba-959a061b9)
 - Lawrence Narh-Lawson #3: [GitHub](https://github.com/lawlawson) / [LinkedIn](https://www.linkedin.com/in/lawlawson/)
 - Eleazer Abbey #4: [GitHub](https://github.com/abbey-eleazer) / [LinkedIn](https://www.linkedin.com/in/eleazer-abbey/)
