@@ -1,5 +1,7 @@
-function Header() {
-  return <h1>Interview Prep App</h1>;
+const Header = () => {
+  return (
+    <div>Header</div>
+  )
 }
 
-export default Header;
+export default Header
