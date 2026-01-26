@@ -80,6 +80,7 @@ coding!
 - Lawrence Narh-Lawson #3: [GitHub](https://github.com/lawlawson) / [LinkedIn](https://www.linkedin.com/in/lawlawson/)
 - Eleazer Abbey #4: [GitHub](https://github.com/abbey-eleazer) / [LinkedIn](https://www.linkedin.com/in/eleazer-abbey/)
 
+- Nandhini Ravichandran #4: [GitHub](https://github.com/Nandhini0123) / [LinkedIn](https://www.linkedin.com/in/nan-ravi/)
   ...
 
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
