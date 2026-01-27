@@ -16,7 +16,7 @@ function QuestionCard({ question, questionNumber, totalQuestions }) {
         {Object.entries(question.options).map(([letter, text]) => (
           <div
             key={letter}
-            className="flex items-start p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300"
+            className="flex items-start p-4 rounded-lg border border-emarald-200 hover:border-emerald-600 hover:scale-101 transition-transform duration-300"
           >
             <span className="font-semibold text-gray-700 mr-3">{letter}.</span>
             <span className="text-gray-800">{text}</span>

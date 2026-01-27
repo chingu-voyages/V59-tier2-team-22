@@ -35,7 +35,7 @@ function RolesPage() {
         <div className="mt-12 w-full border border-gray-300 rounded-3xl p-6 ">
           <ul className="role-cards-flex">
             {rolesData.map((role) => (
-              <RoleCard key={role} role={role} />
+              <RoleCard key={role.role} role={role} />
             ))}
           </ul>
         </div>
