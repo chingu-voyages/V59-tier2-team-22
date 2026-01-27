@@ -11,7 +11,7 @@
   }
 
   h1 {
-    @apply mx-auto max-w-4xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px];
+    @apply mx-auto max-w-4xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-19;
   }
 
   h2 {
@@ -39,10 +39,10 @@
   }
 
   .search {
-    @apply flex items-center min-w-[20rem] md:w-[30rem] mb-6 border border-gray-300 rounded-xl p-4 ;
+    @apply flex items-center min-w-[20rem] md:w-120 mb-6 border border-gray-300 rounded-xl p-4 ;
   } 
   .search-input {
-    @apply flex-grow border-none outline-none text-gray-700 text-lg;
+    @apply grow border-none outline-none text-gray-700 text-lg;
   }
   .search-btn {
     @apply bg-emerald-600 text-white px-4 py-2 rounded-lg ml-4 hover:bg-emerald-700 transition-colors duration-300 cursor-pointer;
