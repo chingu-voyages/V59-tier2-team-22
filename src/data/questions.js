@@ -377,5 +377,636 @@ const QUESTIONS_DATA = [
         },
       ],
     },
+
+    {
+      role: "Frontend Developer",
+      focus: "HTML, CSS, JavaScript, React, Accessibility",
+      flashcards: [
+        {
+          id: 26,
+          question: "Which HTML tag is best for wrapping a navigation menu?",
+          options: {
+            A: "<nav>",
+            B: "<menu>",
+            C: "<ul>",
+            D: "<header>",
+          },
+          answer: "A",
+          rationale:
+            "<nav> is the semantic element specifically for navigation links.",
+        },
+        {
+          id: 27,
+          question: "What does JSX stand for in React?",
+          options: {
+            A: "JavaScript XML",
+            B: "Java Syntax Extension",
+            C: "JSON Xpress",
+            D: "JavaScript Extra",
+          },
+          answer: "A",
+          rationale: "JSX allows writing HTML-like syntax inside JavaScript.",
+        },
+        {
+          id: 28,
+          question: "Which CSS property controls text size?",
+          options: {
+            A: "font-style",
+            B: "font-size",
+            C: "text-weight",
+            D: "line-height",
+          },
+          answer: "B",
+          rationale: "font-size directly sets the size of text.",
+        },
+        {
+          id: 29,
+          question: "How do you improve accessibility for buttons?",
+          options: {
+            A: "Use <div> with onclick",
+            B: "Use <button> with clear labels",
+            C: "Hide text inside CSS",
+            D: "Only use icons",
+          },
+          answer: "B",
+          rationale:
+            "Semantic <button> elements with descriptive labels improve accessibility.",
+        },
+        {
+          id: 30,
+          question: "Which React hook is used for managing state?",
+          options: {
+            A: "useEffect",
+            B: "useState",
+            C: "useContext",
+            D: "useReducer",
+          },
+          answer: "B",
+          rationale: "useState is the primary hook for local component state.",
+        },
+      ],
+    },
+
+    {
+      role: "Backend Developer",
+      focus: "APIs, Databases, Authentication, Server-side logic",
+      flashcards: [
+        {
+          id: 31,
+          question:
+            "Which HTTP method is typically used to update existing data?",
+          options: { A: "GET", B: "POST", C: "PUT", D: "DELETE" },
+          answer: "C",
+          rationale: "PUT is used for updating resources.",
+        },
+        {
+          id: 32,
+          question: "What does REST stand for?",
+          options: {
+            A: "Representational State Transfer",
+            B: "Random Execution Standard",
+            C: "Remote Server Technology",
+            D: "Rapid Endpoint Service",
+          },
+          answer: "A",
+          rationale: "REST is an architectural style for APIs.",
+        },
+        {
+          id: 33,
+          question: "Which database is NoSQL?",
+          options: { A: "MySQL", B: "PostgreSQL", C: "MongoDB", D: "Oracle" },
+          answer: "C",
+          rationale: "MongoDB stores data in JSON-like documents.",
+        },
+        {
+          id: 34,
+          question: "What is JWT commonly used for?",
+          options: {
+            A: "Data encryption",
+            B: "User authentication",
+            C: "Database indexing",
+            D: "File compression",
+          },
+          answer: "B",
+          rationale: "JWT (JSON Web Token) is used for secure authentication.",
+        },
+        {
+          id: 35,
+          question:
+            "Which language is most commonly used for backend with Node.js?",
+          options: { A: "Python", B: "JavaScript", C: "Java", D: "C#" },
+          answer: "B",
+          rationale: "Node.js runs JavaScript on the server.",
+        },
+      ],
+    },
+
+    {
+      role: "Fullstack Developer",
+      focus: "Frontend + Backend integration, APIs, Deployment",
+      flashcards: [
+        {
+          id: 36,
+          question: "Which stack is commonly referred to as MERN?",
+          options: {
+            A: "MongoDB, Express, React, Node.js",
+            B: "MySQL, Ember, Ruby, Nginx",
+            C: "MongoDB, Electron, React, Next.js",
+            D: "MariaDB, Express, Redux, Node.js",
+          },
+          answer: "A",
+          rationale: "MERN is MongoDB, Express, React, Node.js.",
+        },
+        {
+          id: 37,
+          question: "What is the main advantage of GraphQL over REST?",
+          options: {
+            A: "Faster database queries",
+            B: "Clients can request exactly the data they need",
+            C: "It uses fewer servers",
+            D: "It replaces SQL",
+          },
+          answer: "B",
+          rationale:
+            "GraphQL avoids over-fetching by allowing precise queries.",
+        },
+        {
+          id: 38,
+          question: "Which tool is commonly used for bundling frontend code?",
+          options: { A: "Webpack", B: "Docker", C: "Postman", D: "Jenkins" },
+          answer: "A",
+          rationale: "Webpack bundles frontend assets.",
+        },
+        {
+          id: 39,
+          question: "Which HTTP method is used to delete a resource?",
+          options: { A: "REMOVE", B: "DELETE", C: "DROP", D: "DESTROY" },
+          answer: "B",
+          rationale: "DELETE removes resources in REST APIs.",
+        },
+        {
+          id: 40,
+          question: "Which cloud provider offers Lambda functions?",
+          options: { A: "AWS", B: "Azure", C: "Google Cloud", D: "Heroku" },
+          answer: "A",
+          rationale: "AWS Lambda provides serverless compute.",
+        },
+      ],
+    },
+
+    {
+      role: "Data Scientist",
+      focus: "Machine Learning, Statistics, Python, Data Visualization",
+      flashcards: [
+        {
+          id: 41,
+          question:
+            "Which library is commonly used for data analysis in Python?",
+          options: {
+            A: "NumPy",
+            B: "Pandas",
+            C: "Matplotlib",
+            D: "TensorFlow",
+          },
+          answer: "B",
+          rationale: "Pandas provides DataFrame structures for analysis.",
+        },
+        {
+          id: 42,
+          question: "What does overfitting mean in machine learning?",
+          options: {
+            A: "Model performs well on training but poorly on new data",
+            B: "Model is too simple",
+            C: "Model ignores training data",
+            D: "Model has no parameters",
+          },
+          answer: "A",
+          rationale:
+            "Overfitting means memorizing training data instead of generalizing.",
+        },
+        {
+          id: 43,
+          question: "Which visualization is best for categorical comparisons?",
+          options: {
+            A: "Line chart",
+            B: "Bar chart",
+            C: "Scatter plot",
+            D: "Histogram",
+          },
+          answer: "B",
+          rationale: "Bar charts compare categories effectively.",
+        },
+        {
+          id: 44,
+          question: "Which algorithm is used for classification?",
+          options: {
+            A: "K-Means",
+            B: "Linear Regression",
+            C: "Decision Tree",
+            D: "PCA",
+          },
+          answer: "C",
+          rationale: "Decision Trees classify data into categories.",
+        },
+        {
+          id: 45,
+          question: "Which metric evaluates classification accuracy?",
+          options: { A: "RMSE", B: "Precision", C: "MAE", D: "R^2" },
+          answer: "B",
+          rationale: "Precision measures correct positive predictions.",
+        },
+      ],
+    },
+    {
+      role: "DevOps Engineer",
+      focus: "CI/CD, Infrastructure, Automation, Cloud",
+      flashcards: [
+        {
+          id: 46,
+          question: "Which tool is commonly used for containerization?",
+          options: {
+            A: "Docker",
+            B: "Jenkins",
+            C: "Terraform",
+            D: "Kubernetes",
+          },
+          answer: "A",
+          rationale: "Docker packages applications into containers.",
+        },
+        {
+          id: 47,
+          question: "What does CI/CD stand for?",
+          options: {
+            A: "Continuous Integration / Continuous Deployment",
+            B: "Code Inspection / Code Delivery",
+            C: "Cloud Infrastructure / Cloud Development",
+            D: "Continuous Improvement / Continuous Debugging",
+          },
+          answer: "A",
+          rationale: "CI/CD automates integration and deployment.",
+        },
+        {
+          id: 48,
+          question: "Which tool manages infrastructure as code?",
+          options: { A: "Terraform", B: "GitHub", C: "Slack", D: "Postman" },
+          answer: "A",
+          rationale: "Terraform provisions infrastructure declaratively.",
+        },
+        {
+          id: 49,
+          question: "Which service orchestrates containers?",
+          options: {
+            A: "Docker",
+            B: "Kubernetes",
+            C: "Ansible",
+            D: "CircleCI",
+          },
+          answer: "B",
+          rationale:
+            "Kubernetes manages and scales containerized applications.",
+        },
+        {
+          id: 50,
+          question:
+            "What is the main benefit of using monitoring tools like Prometheus?",
+          options: {
+            A: "They automatically deploy code",
+            B: "They track system performance and alert on issues",
+            C: "They replace CI/CD pipelines",
+            D: "They encrypt user data",
+          },
+          answer: "B",
+          rationale:
+            "Monitoring tools provide visibility into system health and performance.",
+        },
+      ],
+    },
+
+    {
+      role: "Product Manager",
+      focus: "Strategy, Roadmaps, Stakeholder Communication",
+      flashcards: [
+        {
+          id: 51,
+          question: "What is a product roadmap?",
+          options: {
+            A: "A list of bugs",
+            B: "A timeline of planned product features and goals",
+            C: "A marketing campaign",
+            D: "A backlog of developer tasks",
+          },
+          answer: "B",
+          rationale:
+            "Roadmaps communicate product vision and planned features.",
+        },
+        {
+          id: 52,
+          question: "Which metric best measures product-market fit?",
+          options: {
+            A: "Churn rate",
+            B: "Daily Active Users",
+            C: "Code coverage",
+            D: "Server uptime",
+          },
+          answer: "B",
+          rationale: "High user engagement indicates product-market fit.",
+        },
+        {
+          id: 53,
+          question: "What is the primary role of a Product Manager?",
+          options: {
+            A: "Write all the code",
+            B: "Define product vision and align stakeholders",
+            C: "Test every feature",
+            D: "Design UI mockups",
+          },
+          answer: "B",
+          rationale:
+            "PMs focus on vision, prioritization, and stakeholder alignment.",
+        },
+        {
+          id: 54,
+          question: "Which framework helps prioritize features?",
+          options: { A: "MoSCoW", B: "Agile", C: "Scrum", D: "Kanban" },
+          answer: "A",
+          rationale:
+            "MoSCoW categorizes features into Must, Should, Could, Won’t.",
+        },
+        {
+          id: 55,
+          question: "What is MVP in product development?",
+          options: {
+            A: "Most Valuable Player",
+            B: "Minimum Viable Product",
+            C: "Maximum Value Proposition",
+            D: "Managed Versioning Process",
+          },
+          answer: "B",
+          rationale:
+            "MVP is the simplest version of a product that delivers value.",
+        },
+      ],
+    },
+
+    {
+      role: "UX/UI Designer",
+      focus: "User Experience, Visual Design, Accessibility",
+      flashcards: [
+        {
+          id: 56,
+          question: "What is a persona in UX design?",
+          options: {
+            A: "A fictional character representing a user type",
+            B: "A CSS framework",
+            C: "A database schema",
+            D: "A UI component library",
+          },
+          answer: "A",
+          rationale: "Personas help designers empathize with user needs.",
+        },
+        {
+          id: 57,
+          question: "Which principle improves usability?",
+          options: {
+            A: "Consistency",
+            B: "Randomness",
+            C: "Complexity",
+            D: "Ambiguity",
+          },
+          answer: "A",
+          rationale: "Consistency ensures predictable user experiences.",
+        },
+        {
+          id: 58,
+          question: "What is a wireframe?",
+          options: {
+            A: "A low-fidelity layout of a design",
+            B: "A final polished UI",
+            C: "A database diagram",
+            D: "A CSS grid system",
+          },
+          answer: "A",
+          rationale: "Wireframes outline structure before visual polish.",
+        },
+        {
+          id: 59,
+          question: "Which tool is commonly used for UI design?",
+          options: { A: "Figma", B: "Docker", C: "Jenkins", D: "MongoDB" },
+          answer: "A",
+          rationale: "Figma is widely used for collaborative UI design.",
+        },
+        {
+          id: 60,
+          question: "What does 'A/B testing' mean?",
+          options: {
+            A: "Testing two versions of a design to see which performs better",
+            B: "Testing accessibility compliance",
+            C: "Testing backend APIs",
+            D: "Testing browser compatibility",
+          },
+          answer: "A",
+          rationale:
+            "A/B testing compares user responses to two design variants.",
+        },
+      ],
+    },
+
+    {
+      role: "QA Engineer",
+      focus: "Testing, Automation, Quality Assurance",
+      flashcards: [
+        {
+          id: 61,
+          question: "What is the purpose of regression testing?",
+          options: {
+            A: "To test new features only",
+            B: "To ensure existing functionality still works after changes",
+            C: "To test performance under load",
+            D: "To test UI design",
+          },
+          answer: "B",
+          rationale: "Regression testing prevents old features from breaking.",
+        },
+        {
+          id: 62,
+          question: "Which tool is commonly used for automated UI testing?",
+          options: { A: "Selenium", B: "Docker", C: "Terraform", D: "Git" },
+          answer: "A",
+          rationale: "Selenium automates browser testing.",
+        },
+        {
+          id: 63,
+          question: "What is a test case?",
+          options: {
+            A: "A bug report",
+            B: "A set of conditions to validate functionality",
+            C: "A database entry",
+            D: "A CI/CD pipeline",
+          },
+          answer: "B",
+          rationale: "Test cases define inputs, actions, and expected results.",
+        },
+        {
+          id: 64,
+          question: "What is load testing?",
+          options: {
+            A: "Testing how the system performs under heavy usage",
+            B: "Testing UI responsiveness",
+            C: "Testing database schema",
+            D: "Testing accessibility",
+          },
+          answer: "A",
+          rationale: "Load testing evaluates performance under stress.",
+        },
+        {
+          id: 65,
+          question:
+            "Which type of testing ensures the system meets business needs?",
+          options: {
+            A: "Unit Testing",
+            B: "Integration Testing",
+            C: "Acceptance Testing",
+            D: "Smoke Testing",
+          },
+          answer: "C",
+          rationale:
+            "Acceptance testing validates requirements from a business perspective.",
+        },
+      ],
+    },
+
+    {
+      role: "Mobile Developer",
+      focus: "iOS, Android, Cross-platform frameworks",
+      flashcards: [
+        {
+          id: 66,
+          question: "Which language is primarily used for Android development?",
+          options: {
+            A: "Swift",
+            B: "Kotlin",
+            C: "Objective-C",
+            D: "JavaScript",
+          },
+          answer: "B",
+          rationale: "Kotlin is the modern language for Android apps.",
+        },
+        {
+          id: 67,
+          question: "Which framework allows cross-platform mobile development?",
+          options: {
+            A: "React Native",
+            B: "Spring Boot",
+            C: "Django",
+            D: "Angular",
+          },
+          answer: "A",
+          rationale: "React Native builds apps for iOS and Android.",
+        },
+        {
+          id: 68,
+          question: "Which file defines app permissions in Android?",
+          options: {
+            A: "index.html",
+            B: "AndroidManifest.xml",
+            C: "package.json",
+            D: "config.yml",
+          },
+          answer: "B",
+          rationale: "AndroidManifest.xml declares app permissions.",
+        },
+        {
+          id: 69,
+          question: "Which tool is used to publish iOS apps?",
+          options: {
+            A: "Google Play Console",
+            B: "Xcode",
+            C: "App Store Connect",
+            D: "Firebase",
+          },
+          answer: "C",
+          rationale: "App Store Connect manages iOS app publishing.",
+        },
+        {
+          id: 70,
+          question: "Which database is commonly used for local mobile storage?",
+          options: { A: "SQLite", B: "MongoDB", C: "PostgreSQL", D: "Redis" },
+          answer: "A",
+          rationale:
+            "SQLite is lightweight and embedded, ideal for mobile local storage.",
+        },
+      ],
+    },
+
+    {
+      role: "Systems Analyst",
+      focus: "Requirements gathering, System design, Business-IT alignment",
+      flashcards: [
+        {
+          id: 71,
+          question: "What is the primary role of a Systems Analyst?",
+          options: {
+            A: "Write all the code",
+            B: "Bridge business needs with technical solutions",
+            C: "Design marketing campaigns",
+            D: "Manage cloud infrastructure",
+          },
+          answer: "B",
+          rationale:
+            "Systems Analysts translate business requirements into system specifications.",
+        },
+        {
+          id: 72,
+          question:
+            "Which document captures functional and non-functional requirements?",
+          options: {
+            A: "System Requirements Specification",
+            B: "User Manual",
+            C: "Test Plan",
+            D: "Wireframe",
+          },
+          answer: "A",
+          rationale:
+            "SRS documents define system requirements comprehensively.",
+        },
+        {
+          id: 73,
+          question: "Which diagram shows data flow between processes?",
+          options: {
+            A: "Entity Relationship Diagram",
+            B: "Data Flow Diagram",
+            C: "Class Diagram",
+            D: "Sequence Diagram",
+          },
+          answer: "B",
+          rationale: "DFDs illustrate how data moves through a system.",
+        },
+        {
+          id: 74,
+          question:
+            "Which technique helps gather requirements from stakeholders?",
+          options: {
+            A: "Brainstorming",
+            B: "Coding",
+            C: "Debugging",
+            D: "Unit Testing",
+          },
+          answer: "A",
+          rationale:
+            "Brainstorming sessions uncover stakeholder needs and ideas.",
+        },
+        {
+          id: 75,
+          question:
+            "Which methodology emphasizes iterative development and stakeholder feedback?",
+          options: { A: "Waterfall", B: "Agile", C: "V-Model", D: "Spiral" },
+          answer: "B",
+          rationale:
+            "Agile focuses on iterative cycles and continuous stakeholder collaboration.",
+        },
+      ],
+    },
   ],
 ];
+
+export default QUESTIONS_DATA;
