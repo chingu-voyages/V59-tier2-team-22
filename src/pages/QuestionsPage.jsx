@@ -25,7 +25,7 @@ function QuestionsPage() {
         </p>
         <Link
           to="/roles"
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+          className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emarald-700 transition-colors duration-300"
         >
           Back to Roles
         </Link>
@@ -45,7 +45,7 @@ function QuestionsPage() {
         </p>
         <Link
           to="/roles"
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+          className="inline-block hover:text-gray-700 text-white px-6 py-3 rounded-lg "
         >
           Back to Roles
         </Link>
@@ -61,7 +61,7 @@ function QuestionsPage() {
       {/* Back Button */}
       <Link
         to="/roles"
-        className="text-blue-600 hover:text-blue-700 font-medium mb-4 inline-block"
+        className="text-gray-600 hover:text-gray-700 font-medium mb-4 inline-block"
       >
         Back to Roles
       </Link>
