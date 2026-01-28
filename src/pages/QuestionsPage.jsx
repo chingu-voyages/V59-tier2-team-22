@@ -168,6 +168,13 @@ function QuestionsPage() {
           {isLastQuestion ? "Finish" : "Next →"}
         </button>
       </div>
+
+      {/* Validation message */}
+      {!selectedAnswers && (
+        <p className="text-center text-sm text-gray-500 mt-4">
+          Please select an answer to proceed
+        </p>
+      )}
     </div>
   );
 }
