@@ -115,7 +115,7 @@ function QuestionsPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-8">
+    <div className="max-w-4xl mx-auto ">
       {/* Return Links */}
       <Link
         to="/roles"
@@ -125,13 +125,11 @@ function QuestionsPage() {
       </Link>
 
       {/* Role Title */}
-      <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-        {role}
-      </h1>
+      <h1 className="text-2xl  font-bold text-gray-900 mb-2">{role}</h1>
 
       {/* Progress Bar */}
       <div className="mb-4">
-        <div className="flex justify-between text-sm text-gray-600 mb-2">
+        <div className="flex justify-between text-sm text-gray-600 mb-4">
           <span>Progress</span>
           <span>
             {Math.round(((currentIndex + 1) / questions.length) * 100)}%
