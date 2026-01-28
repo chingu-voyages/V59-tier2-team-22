@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import QUESTIONS_DATA from "../data/questions";
 import QuestionCard from "../components/cards/QuestionCard";
@@ -9,6 +10,13 @@ function QuestionsPage() {
   // Get role from URL
   const { role } = useParams();
 
+  // Initialize state
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [answers, setAnswers] = useState({});
+
+  // Create ref for question container
+  const questionRef = useRef(null);
+
   // Find questions for this role
   const roleData = flattenedRoles.find((r) => r.role === role);
   const questions = roleData?.flashcards || [];
@@ -18,11 +26,23 @@ function QuestionsPage() {
     return (
       <div className="max-w-2xl mx-auto text-center py-12">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          Role Not Found
+          Questions Coming soon!
         </h1>
         <p className="text-gray-600 mb-6">
-          The role "{role}" doesn't exist in our database.
+          We don't have Questions for "{role}" yet. Try one of these roles:
         </p>
+        <ul className="mb-6 space-y-2">
+          {QUESTIONS_DATA.map((r) => (
+            <li key={r.role}>
+              <Link
+                to={`/questions/${encodeURIComponent(r.role)}`}
+                className="text-emerald-600 hover:text-emerald-700 underline"
+              >
+                {r.role}
+              </Link>
+            </li>
+          ))}
+        </ul>
         <Link
           to="/roles"
           className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emarald-700 transition-colors duration-300"
@@ -53,12 +73,43 @@ function QuestionsPage() {
     );
   }
 
-  // For now, just show the FIRST question
-  const currentQuestion = questions[0];
+  const currentQuestion = questions[currentIndex];
+  const selectedAnswers = answers[currentQuestion.id];
+  const isFirstQuestion = currentIndex === 0;
+  const isLastQuestion = currentIndex === questions.length - 1;
+
+  // auto scroll when question changes
+  useEffect(() => {
+    if (questionRef.current) {
+      questionRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [currentIndex]);
+
+  const handleAnswerSelect = (answer) => {
+    setAnswers((prev) => ({
+      ...prev,
+      [currentQuestion.id]: answer,
+    }));
+  };
+
+  const handlePrevious = () => {
+    if (!isFirstQuestion) {
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (!isLastQuestion) {
+      setCurrentIndex((prev) => prev + 1);
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto py-8">
-      {/* Back Button */}
+      {/* Return Links */}
       <Link
         to="/roles"
         className="text-gray-600 hover:text-gray-700 font-medium mb-4 inline-block"
@@ -70,6 +121,24 @@ function QuestionsPage() {
       <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
         {role}
       </h1>
+
+      {/* Progress Bar */}
+      <div className="mb-6">
+        <div className="flex justify-between text-sm text-gray-600 mb-2">
+          <span>Progress</span>
+          <span>
+            {Math.round(((currentIndex + 1) / questions.length) * 100)}%
+          </span>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-2">
+          <div
+            className="bg-emerald-600 h-2 rounded-full transition-all duration-300"
+            style={{
+              width: `${((currentIndex + 1) / questions.length) * 100}%`,
+            }}
+          ></div>
+        </div>
+      </div>
 
       {/* Question Card */}
       <QuestionCard
