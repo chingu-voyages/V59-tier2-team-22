@@ -180,6 +180,44 @@ describe("QuestionsPage - User Story: See one interview question at a time", () 
     });
   });
 
+  describe("Edge Case: Selected role has zero questions", () => {
+    it('should show "No Questions Available" message', () => {
+      renderWithRouter("Scrum Master");
+
+      expect(screen.getByText("No Questions Available")).toBeInTheDocument();
+      expect(
+        screen.getByText(/Questions for "Scrum Master" are coming soon/),
+      ).toBeInTheDocument();
+    });
+
+    it("should provide link back to roles", () => {
+      renderWithRouter("Scrum Master");
+
+      const backLink = screen.getByText(/Back to Roles/);
+      expect(backLink).toBeInTheDocument();
+    });
+
+    it("should not show progress bar", () => {
+      renderWithRouter("Scrum Master");
+
+      expect(screen.queryByText("Progress")).not.toBeInTheDocument();
+    });
+  });
+
+  describe("Edge Case: Prevent interview start for invalid data", () => {
+    it("should not crash with malformed URL parameter", () => {
+      renderWithRouter("%20%20%20");
+
+      expect(screen.getByText(/Questions Coming soon!/)).toBeInTheDocument();
+    });
+
+    it("should handle special characters in role name", () => {
+      renderWithRouter("Role & Name / Special");
+
+      expect(screen.getByText(/Questions Coming soon!/)).toBeInTheDocument();
+    });
+  });
+
   describe("UI Feedback", () => {
     it("should show instruction text", () => {
       renderWithRouter("Scrum Product Owner");
