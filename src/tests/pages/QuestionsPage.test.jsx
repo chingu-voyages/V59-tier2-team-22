@@ -59,6 +59,40 @@ describe("QuestionsPage - User Story: See one interview question at a time", () 
     vi.spyOn(global, "alert").mockImplementation(() => {});
   });
 
+  describe("Acceptance Criteria: Questions load based on selected role", () => {
+    it("should load questions for valid role", () => {
+      renderWithRouter("Scrum Product Owner");
+
+      expect(screen.getByText("Scrum Product Owner")).toBeInTheDocument();
+      expect(screen.getByText("Question 1?")).toBeInTheDocument();
+    });
+
+    it("should show error for non-existent role", () => {
+      renderWithRouter("Invalid Role");
+      expect(screen.getByText(/Questions Coming soon!/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(/We don't have Questions for "Invalid Role"/),
+      ).toBeInTheDocument();
+    });
+
+    it("should display available roles when role not found", () => {
+      renderWithRouter("Invalid Role");
+
+      expect(screen.getByText("Scrum Product Owner")).toBeInTheDocument();
+      expect(screen.getByText("Scrum Master")).toBeInTheDocument();
+    });
+  });
+
+  describe("Acceptance Criteria: One question visible at a time", () => {
+    it("should show only first question on initial load", () => {
+      renderWithRouter("Scrum Product Owner");
+
+      expect(screen.getByText("Question 1?")).toBeInTheDocument();
+      expect(screen.queryByText("Question 2?")).not.toBeInTheDocument();
+      expect(screen.queryByText("Question 3?")).not.toBeInTheDocument();
+    });
+
+
   describe("UI Feedback", () => {
     it("should show instruction text", () => {
       renderWithRouter("Scrum Product Owner");
