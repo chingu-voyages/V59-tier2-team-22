@@ -92,6 +92,49 @@ describe("QuestionsPage - User Story: See one interview question at a time", () 
       expect(screen.queryByText("Question 3?")).not.toBeInTheDocument();
     });
 
+    it("should show only one question after navigation", async () => {
+      renderWithRouter("Scrum Product Owner");
+
+      // Answer first question
+      fireEvent.click(screen.getByText(/B1/));
+
+      // Wait for auto-advance
+      await waitFor(
+        () => {
+          expect(screen.getByText("Question 2?")).toBeInTheDocument();
+        },
+        { timeout: 1000 },
+      );
+
+      // Only question 2 should be visible
+      expect(screen.queryByText("Question 1?")).not.toBeInTheDocument();
+      expect(screen.queryByText("Question 3?")).not.toBeInTheDocument();
+    });
+  });
+
+  describe("Acceptance Criteria: Questions are readable and structured", () => {
+    it("should display question number", () => {
+      renderWithRouter("Scrum Product Owner");
+
+      expect(screen.getByText("Question 1 of 3")).toBeInTheDocument();
+    });
+
+    it("should display all 4 answer options", () => {
+      renderWithRouter("Scrum Product Owner");
+
+      expect(screen.getByText(/A1/)).toBeInTheDocument();
+      expect(screen.getByText(/B1/)).toBeInTheDocument();
+      expect(screen.getByText(/C1/)).toBeInTheDocument();
+      expect(screen.getByText(/D1/)).toBeInTheDocument();
+    });
+
+    it("should display progress bar", () => {
+      renderWithRouter("Scrum Product Owner");
+
+      expect(screen.getByText("Progress")).toBeInTheDocument();
+      expect(screen.getByText("33%")).toBeInTheDocument(); // 1 of 3
+    });
+  });
 
   describe("UI Feedback", () => {
     it("should show instruction text", () => {
