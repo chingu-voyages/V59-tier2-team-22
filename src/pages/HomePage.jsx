@@ -3,7 +3,7 @@ import { Link } from "react-router";
 function HomePage() {
   return (
     <>
-      <h2>Home Page</h2>
+      <h2>Welcome to Interview Prep 101</h2>
       <Link to="/roles">Roles</Link>
     </>
   );

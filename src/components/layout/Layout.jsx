@@ -4,17 +4,18 @@ import Footer from "./Footer";
 
 function Layout() {
   return (
-    <div>
-      <header>
+    <div className="min-h-screen flex flex-col">
+      <header className="bg-white shadow-sm">
         <Header />
       </header>
-      <main>
+      <main className="flex-1 container mx-auto px-4 py-8">
         <Outlet />
       </main>
-      <footer>
+      <footer className="bg-gray-100 border-t border-gray-200">
         <Footer />
       </footer>
     </div>
   );
 }
+
 export default Layout;
