@@ -195,7 +195,7 @@ function SummaryPage() {
           to="/roles"
           className="text-gray-600 hover:text-gray-700 font-medium"
         >
-          ← Back to Roles
+          Back to Roles
         </Link>
       </div>
     </div>
