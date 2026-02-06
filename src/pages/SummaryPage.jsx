@@ -1,15 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router";
 import { useInterview } from "../context/InterviewContext";
 
 function SummaryPage() {
   const navigate = useNavigate();
   const { session, resetInterview, isAnswerCorrect } = useInterview();
+  const isLeavingIntentionally = useRef(false);
 
   // Redirect if no completed session
   useEffect(() => {
     if (!session || !session.isComplete) {
-      navigate("/roles");
+      if (!isLeavingIntentionally.current) {
+        navigate("/roles");
+      }
     }
   }, [session, navigate]);
 
@@ -25,11 +28,13 @@ function SummaryPage() {
   const timeTaken = Math.round((endTime - startTime) / 1000 / 60); // minutes
 
   const handleTryAgain = () => {
+    isLeavingIntentionally.current = true;
     resetInterview();
     navigate(`/questions/${encodeURIComponent(role)}`);
   };
 
   const handleNewRole = () => {
+    isLeavingIntentionally.current = true;
     resetInterview();
     navigate("/roles");
   };
