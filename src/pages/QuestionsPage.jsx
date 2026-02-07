@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useParams, Link } from "react-router";
+import { useState, useEffect } from "react";
+import { useParams, Link, useNavigate } from "react-router";
 import QUESTIONS_DATA from "../data/questions";
 import QuestionCard from "../components/cards/QuestionCard";
+import { useInterview } from "../context/InterviewContext";
 import {
   flattenQuestionsData,
   getQuestionsForRole,
@@ -9,24 +10,28 @@ import {
   calculateProgress,
   isFirstQuestion,
   isLastQuestion,
-  getAnsweredCount,
 } from "../utils/questionHelper";
 
 function QuestionsPage() {
-  // Flatten the data to get all roles in a single array
-  const flattenedRoles = flattenQuestionsData(QUESTIONS_DATA);
+  const navigate = useNavigate();
+  const { session, startInterview, saveAnswer, finishInterview } =
+    useInterview();
 
-  // Get role from URL
+  const flattenedRoles = flattenQuestionsData(QUESTIONS_DATA);
   const { role } = useParams();
 
-  // Initialize state
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState({});
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Find questions for this role
   const roleFound = roleExists(flattenedRoles, role);
   const allQuestions = getQuestionsForRole(flattenedRoles, role);
+
+  // Start interview when role loads
+  useEffect(() => {
+    if (allQuestions.length > 0 && (!session || session.role !== role)) {
+      startInterview(role, allQuestions);
+    }
+  }, [role, allQuestions, session, startInterview]);
 
   // Handle role not found
   if (!roleFound) {
@@ -52,7 +57,7 @@ function QuestionsPage() {
         </ul>
         <Link
           to="/roles"
-          className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emarald-700 transition-colors duration-300"
+          className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors duration-300"
         >
           Back to Roles
         </Link>
@@ -72,7 +77,7 @@ function QuestionsPage() {
         </p>
         <Link
           to="/roles"
-          className="inline-block hover:text-gray-700 text-white px-6 py-3 rounded-lg "
+          className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700"
         >
           Back to Roles
         </Link>
@@ -80,16 +85,24 @@ function QuestionsPage() {
     );
   }
 
-  const currentQuestion = allQuestions[currentIndex];
-  const selectedAnswer = answers[currentQuestion.id];
+  // Wait for session to initialize
+  if (!session || session.questions.length === 0) {
+    return (
+      <div className="max-w-2xl mx-auto text-center py-12">
+        <p className="text-gray-500">Loading interview...</p>
+      </div>
+    );
+  }
+
+  //  Use session questions and answers from context
+  const questions = session.questions;
+  const currentQuestion = questions[currentIndex];
+  const selectedAnswer = session.answers[currentQuestion?.id];
   const isFirst = isFirstQuestion(currentIndex);
-  const isLast = isLastQuestion(currentIndex, allQuestions.length);
+  const isLast = isLastQuestion(currentIndex, questions.length);
 
   const handleAnswerSelect = (answer) => {
-    setAnswers((prev) => ({
-      ...prev,
-      [currentQuestion.id]: answer,
-    }));
+    saveAnswer(currentQuestion.id, answer);
 
     setIsTransitioning(true);
     setTimeout(() => {
@@ -97,9 +110,8 @@ function QuestionsPage() {
         setCurrentIndex((prev) => prev + 1);
         setIsTransitioning(false);
       } else {
-        const totalAnswered = getAnsweredCount(answers) + 1;
-        alert(`Quiz complete! You answered ${totalAnswered} questions.`);
-        setIsTransitioning(false);
+        finishInterview();
+        navigate("/summary");
       }
     }, 400);
   };
@@ -121,37 +133,35 @@ function QuestionsPage() {
         setCurrentIndex((prev) => prev + 1);
         setIsTransitioning(false);
       }, 300);
+    } else {
+      finishInterview();
+      navigate("/summary");
     }
   };
 
-  const progressPercent = calculateProgress(currentIndex, allQuestions.length);
+  const progressPercent = calculateProgress(currentIndex, questions.length);
 
   return (
-    <div className="max-w-4xl mx-auto ">
-      {/* Return Links */}
+    <div className="max-w-4xl mx-auto px-4 py-8">
       <Link
         to="/roles"
-        className="text-gray-600 hover:text-gray-700 font-medium  inline-block"
+        className="text-gray-600 hover:text-gray-700 font-medium mb-4 inline-block"
       >
         Back to Roles
       </Link>
 
-      {/* Role Title */}
-      <h1 className="text-2xl  font-bold text-gray-900 mb-2">{role}</h1>
+      <h1 className="text-2xl font-bold text-gray-900 mb-2">{role}</h1>
 
-      {/* Progress Bar */}
-      <div className="mb-4">
-        <div className="flex justify-between text-sm text-gray-600 mb-4">
+      <div className="mb-6">
+        <div className="flex justify-between text-sm text-gray-600 mb-2">
           <span>Progress</span>
           <span>{progressPercent}%</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div
-            className="bg-emerald-600 h-2 rounded-full transition-all duration-300"
-            style={{
-              width: `${progressPercent}%`,
-            }}
-          ></div>
+            className="bg-emerald-600 h-2 rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${progressPercent}%` }}
+          />
         </div>
       </div>
 
@@ -163,18 +173,17 @@ function QuestionsPage() {
         <QuestionCard
           question={currentQuestion}
           questionNumber={currentIndex + 1}
-          totalQuestions={allQuestions.length}
+          totalQuestions={questions.length}
           selectedAnswer={selectedAnswer}
           onAnswerSelect={handleAnswerSelect}
         />
       </div>
 
-      {/* Navigation buttons */}
       <div className="flex justify-between items-center mt-8">
         <button
           onClick={handlePrevious}
           disabled={isFirst}
-          className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300 transition cursor-pointer"
+          className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300 transition"
         >
           Previous
         </button>
@@ -182,13 +191,12 @@ function QuestionsPage() {
         <button
           onClick={handleNext}
           disabled={isLast || !selectedAnswer}
-          className="px-6 py-2 bg-emerald-600 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-emerald-700 transition cursor-pointer"
+          className="px-6 py-2 bg-emerald-600 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-emerald-700 transition"
         >
-          {isLast ? "Finish" : "Next "}
+          {isLast ? "Finish" : "Next →"}
         </button>
       </div>
 
-      {/* Instruction message */}
       <p className="text-center text-sm text-gray-500 mt-6">
         {isLast
           ? "Select your final answer to complete"

@@ -7,12 +7,11 @@ const rolesData = QUESTIONS_DATA.flat();
 function RolesPage() {
   return (
     <>
-      <Link to="/questions/:role">Questions</Link>
       <p>
         <Link to="/">Home</Link>
       </p>
       <section className="roles-page-container">
-        <div className="min-w-[20rem] md:w-160 text-center mb-8 ">
+        <div className="text-center mb-8 ">
           <h2>Find Your Job Role</h2>
           <p className="mt-4">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima,

@@ -40,7 +40,7 @@ export function roleExists(flattenedData, role) {
  */
 export function calculateProgress(currentIndex, totalQuestions) {
   if (totalQuestions === 0) return 0;
-  return Math.round(((currentIndex + 1) / totalQuestions) * 100);
+  return Math.round((currentIndex / totalQuestions) * 100);
 }
 
 /**
