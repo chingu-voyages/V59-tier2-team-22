@@ -1,38 +1,35 @@
-import { Link } from "react-router";
-import RoleCard from "../components/cards/RoleCard";
-import QUESTIONS_DATA from "../data/questions.js";
+import { Link } from 'react-router';
+import RoleCard from '../components/cards/RoleCard';
+import QUESTIONS_DATA from '../data/questions.js';
 
 const rolesData = QUESTIONS_DATA.flat();
 
 function RolesPage() {
   return (
     <>
-      <p>
-        <Link to="/">Home</Link>
-      </p>
-      <section className="roles-page-container">
-        <div className="text-center mb-8 ">
+      <section className='roles-page-container roles-page-container'>
+        <div className='text-center mb-8 '>
           <h2>Find Your Job Role</h2>
-          <p className="mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima,
-            doloremque animi. Natus, quisquam autem doloribus nostrum aliquid
-            facere distinctio odio at, nulla delectus accusantium culpa hic a
-            laudantium velit!
+          <p className='mt-4'>
+            Browse and select from a variety of job roles to view tailored
+            interview questions and practice for your next opportunity. Use the
+            search to quickly find roles that match your interests or career
+            goals.
           </p>
         </div>
-        <div className="search">
+        <div className='search'>
           {/* search  */}
           <input
-            type="text"
-            placeholder="Search roles..."
-            className="search-input"
+            type='text'
+            placeholder='Search roles...'
+            className='search-input'
           />
-          <button className="search-btn">Search</button>
+          <button className='search-btn'>Search</button>
         </div>
 
         {/* roles cards */}
-        <div className="mt-12 w-full border border-gray-300 rounded-3xl p-6 ">
-          <ul className="role-cards-flex">
+        <div className='mt-12 w-full border border-gray-300 rounded-3xl p-6 '>
+          <ul className='role-cards-flex'>
             {rolesData.map((role) => (
               <RoleCard key={role.role} role={role} />
             ))}
