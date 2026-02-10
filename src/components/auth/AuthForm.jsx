@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-function AuthForm({ onSubmit, isLoading }) {
+function AuthForm({ onSubmit, onClose, isLoading }) {
+  // Added onClose prop
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     email: "",
@@ -13,7 +14,7 @@ function AuthForm({ onSubmit, isLoading }) {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    setError(""); // Clear error on input change
+    setError("");
   };
 
   const handleSubmit = (e) => {
@@ -24,6 +25,9 @@ function AuthForm({ onSubmit, isLoading }) {
 
     if (!result.success) {
       setError(result.error);
+    } else {
+      // NEW: Close modal on successful login/signup
+      onClose();
     }
   };
 
