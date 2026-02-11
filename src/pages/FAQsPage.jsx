@@ -5,7 +5,7 @@ function FAQsPage() {
 
   const faqs = [
     {
-      question: 'What is this interview practice platform?',
+      question: 'What is InterviewFlow?',
       answer:
         "Our platform is designed to help you master technical interviews through practice. You can select different job roles, answer role-specific interview questions, and get immediate feedback on your performance. It's a low-pressure, anonymous environment to build confidence before real interviews.",
     },
