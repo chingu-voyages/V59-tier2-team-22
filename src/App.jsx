@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import RolesPage from "./pages/RolesPage";
 import QuestionsPage from "./pages/QuestionsPage";
 import SummaryPage from "./pages/SummaryPage";
+import FAQsPage from "./pages/FAQsPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="roles" element={<RolesPage />} />
+              <Route path="faqs" element={<FAQsPage />} />
               <Route path="summary" element={<SummaryPage />} />
               <Route path="questions/:role" element={<QuestionsPage />} />
             </Route>
