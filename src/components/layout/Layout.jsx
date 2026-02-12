@@ -14,6 +14,9 @@ function Layout() {
       <footer className="bg-gray-100 border-gray-200">
         <Footer />
       </footer>
+
+      {/* Global Chat Widget */}
+      <ChatWidget />
     </div>
   );
 }
