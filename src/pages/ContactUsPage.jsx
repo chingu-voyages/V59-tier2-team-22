@@ -41,7 +41,7 @@ function ContactUsPage() {
             key={member.id}
             className='bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-200 hover:border-yellow-400'>
             {/* Member Card Background */}
-            <div className='bg-gradient-to-br from-yellow-400 to-yellow-300 h-24'></div>
+            <div className='bg-linear-to-br from-yellow-400 to-yellow-300 h-24'></div>
 
             {/* Member Info */}
             <div className='px-6 py-6 text-center'>
