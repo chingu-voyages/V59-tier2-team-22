@@ -1,6 +1,7 @@
-import { Outlet } from 'react-router';
-import Header from './Header';
-import Footer from './Footer';
+import { Outlet } from "react-router";
+import Header from "./Header";
+import Footer from "./Footer";
+import ChatWidget from "../chat/ChatWidget";
 
 function Layout() {
   return (
@@ -14,6 +15,9 @@ function Layout() {
       <footer className='bg-gray-100 border-gray-200'>
         <Footer />
       </footer>
+
+      {/* Global Chat Widget */}
+      <ChatWidget />
     </div>
   );
 }
