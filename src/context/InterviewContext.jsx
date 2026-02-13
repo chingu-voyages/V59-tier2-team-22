@@ -118,10 +118,25 @@ export function InterviewProvider({ children }) {
       };
 
       // Add to history (keep last 10 sessions)
+      // Use a unique ID to prevent duplicates
+      const uniqueId = `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
       setSessionHistory((prevHistory) => {
+        // Check if this session already exists (prevent duplicates)
+        const sessionExists = prevHistory.some(
+          (session) =>
+            session.role === completedSession.role &&
+            session.startTime === completedSession.startTime &&
+            session.endTime === completedSession.endTime,
+        );
+
+        if (sessionExists) {
+          return prevHistory; // Don't add duplicate
+        }
+
         const newHistory = [
           {
-            id: Date.now(),
+            id: uniqueId,
             role: completedSession.role,
             score: completedSession.score,
             startTime: completedSession.startTime,
