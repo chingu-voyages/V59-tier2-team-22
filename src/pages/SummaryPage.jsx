@@ -76,8 +76,10 @@ function SummaryPage() {
             <div className="text-sm text-gray-600">Incorrect</div>
           </div>
 
-          <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 text-center">
-            <div className="text-3xl font-bold text-blue-600">{timeTaken}</div>
+          <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-4 text-center">
+            <div className="text-3xl font-bold text-yellow-600">
+              {timeTaken}
+            </div>
             <div className="text-sm text-gray-600">Minutes</div>
           </div>
         </div>
@@ -130,8 +132,8 @@ function SummaryPage() {
                       <span
                         className={`px-3 py-1 rounded-full text-sm font-semibold ${
                           correct
-                            ? "bg-green-200 text-green-800"
-                            : "bg-red-200 text-red-800"
+                            ? "bg-green-200 text-green-700"
+                            : "bg-yellow-200 text-yellow-600"
                         }`}
                       >
                         {correct ? "✓ Correct" : "✗ Incorrect"}
@@ -154,9 +156,9 @@ function SummaryPage() {
                         key={letter}
                         className={`p-3 rounded-lg border-2 ${
                           isCorrectAnswer
-                            ? "border-green-00 bg-green-100"
+                            ? "border-green-200 bg-green-100"
                             : isUserAnswer
-                              ? "border-red-300 bg-red-100"
+                              ? "border-red-200 bg-red-100"
                               : "border-gray-200 bg-white"
                         }`}
                       >
@@ -182,7 +184,7 @@ function SummaryPage() {
                 </div>
 
                 {/* Rationale */}
-                <div className="bg-white border-l-4 border-blue-500 p-4 rounded">
+                <div className="bg-white border-l-4 border-gray-500 p-4 rounded">
                   <p className="text-sm font-semibold text-gray-700 mb-1">
                     Explanation:
                   </p>

@@ -9,7 +9,7 @@ function Layout() {
       <header className="bg-white shadow-sm">
         <Header />
       </header>
-      <main className="container mx-auto px-4 py-4 flex-grow">
+      <main className="container mx-auto px-4 py-4 grow">
         <Outlet />
       </main>
       <footer className="bg-gray-100 border-t border-gray-200 mt-auto">
