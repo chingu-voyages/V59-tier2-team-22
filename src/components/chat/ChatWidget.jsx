@@ -54,7 +54,7 @@ function ChatWidget() {
       {!isChatOpen && (
         <button
           onClick={toggleChat}
-          className="fixed bottom-5 right-5 md:bottom-6 md:right-6 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 z-50 group"
+          className="fixed bottom-5 right-5 md:bottom-6 md:right-6 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 z-50 group cursor-pointer"
           aria-label="Open chat"
         >
           <MessageCircle className="w-6 h-6" />
@@ -74,7 +74,7 @@ function ChatWidget() {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleClearChat}
-                className="p-1.5 hover:bg-yellow-500 rounded-lg transition"
+                className="p-1.5 hover:bg-yellow-500 rounded-lg transition cursor-pointer"
                 aria-label="Clear chat"
                 title="Clear chat history"
               >
@@ -82,7 +82,7 @@ function ChatWidget() {
               </button>
               <button
                 onClick={toggleChat}
-                className="p-1.5 hover:bg-yellow-500 rounded-lg transition"
+                className="p-1.5 hover:bg-yellow-500 rounded-lg transition cursor-pointer"
                 aria-label="Close chat"
               >
                 <X className="w-5 h-5" />
@@ -167,7 +167,7 @@ function ChatWidget() {
               <button
                 type="submit"
                 disabled={isLoading || !inputValue.trim()}
-                className="px-4 py-3 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-xl font-medium transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-yellow-400"
+                className="px-4 py-3 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-xl font-medium transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-yellow-400 cursor-pointer"
                 aria-label="Send message"
               >
                 <Send className="w-5 h-5" />
