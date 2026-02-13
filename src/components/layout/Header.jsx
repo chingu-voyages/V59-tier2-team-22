@@ -50,6 +50,13 @@ const Header = () => {
             </Link>
           )}
           <Link
+            to="/challenges"
+            className="block px-3 py-2 text-gray-600 hover:text-yellow-400 hover:bg-gray-50 rounded transition"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Challenges
+          </Link>
+          <Link
             to="/blog"
             className="text-gray-600 hover:text-yellow-400 transition"
           >
@@ -132,6 +139,13 @@ const Header = () => {
                   Roles
                 </Link>
               )}
+              <Link
+                to="/challenges"
+                className="block px-3 py-2 text-gray-600 hover:text-yellow-400 hover:bg-gray-50 rounded transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Challenges
+              </Link>
               <Link
                 to="/blog"
                 className="block px-3 py-2 text-gray-600 hover:text-yellow-400 hover:bg-gray-50 rounded transition"
