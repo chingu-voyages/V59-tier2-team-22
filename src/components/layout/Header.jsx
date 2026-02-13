@@ -146,6 +146,12 @@ const Header = () => {
               >
                 FAQs
               </Link>
+              <Link
+                to="/contact-us"
+                className="text-gray-600 hover:text-yellow-400 transition"
+              >
+                Contact Us
+              </Link>
 
               {/* Auth Section - Mobile */}
               {isAuthenticated ? (
