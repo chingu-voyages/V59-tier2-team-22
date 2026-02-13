@@ -146,6 +146,13 @@ const Header = () => {
               >
                 FAQs
               </Link>
+              <Link
+                to="/contact-us"
+                className="block px-3 py-2 text-gray-600 hover:text-yellow-400 hover:bg-gray-50 rounded transition"
+                onClick={() => setIsMenuOpen(false)} // This line closes the menu
+              >
+                Contact Us
+              </Link>
 
               {/* Auth Section - Mobile */}
               {isAuthenticated ? (
