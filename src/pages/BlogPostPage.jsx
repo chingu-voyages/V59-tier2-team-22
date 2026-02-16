@@ -1,5 +1,7 @@
 import { useParams, Link, useNavigate } from 'react-router';
 import blogPosts from '../data/blogPosts';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 function BlogPostPage() {
   const { slug } = useParams();
@@ -32,7 +34,11 @@ function BlogPostPage() {
       <p className='text-sm text-gray-500 mb-8'>
         {post.date} &middot; by {post.author}
       </p>
-      <div className='prose prose-lg text-gray-700'>{post.content}</div>
+      <div className='prose prose-lg text-gray-700'>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {post.content}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 }

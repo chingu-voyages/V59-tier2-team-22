@@ -1,10 +1,50 @@
-import { createContext, useContext, useState, useCallback } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+} from "react";
 import { getRandomQuestions } from "../utils/questionHelper";
 
 const InterviewContext = createContext(null);
 
+const HISTORY_STORAGE_KEY = "interview_prep_history";
+
 export function InterviewProvider({ children }) {
   const [interviewSession, setInterviewSession] = useState(null);
+  const [sessionHistory, setSessionHistory] = useState([]);
+
+  // Load session history from localStorage on mount
+  useEffect(() => {
+    const loadHistory = () => {
+      try {
+        const storedHistory = localStorage.getItem(HISTORY_STORAGE_KEY);
+        if (storedHistory) {
+          const parsedHistory = JSON.parse(storedHistory);
+          setSessionHistory(parsedHistory);
+        }
+      } catch (error) {
+        console.error("Failed to load session history:", error);
+      }
+    };
+
+    loadHistory();
+  }, []);
+
+  // Save session history to localStorage whenever it changes
+  useEffect(() => {
+    if (sessionHistory.length > 0) {
+      try {
+        localStorage.setItem(
+          HISTORY_STORAGE_KEY,
+          JSON.stringify(sessionHistory),
+        );
+      } catch (error) {
+        console.error("Failed to save session history:", error);
+      }
+    }
+  }, [sessionHistory]);
 
   /**
    * Start a new interview session
@@ -65,7 +105,7 @@ export function InterviewProvider({ children }) {
       const totalQuestions = prev.questions.length;
       const percentage = Math.round((correctCount / totalQuestions) * 100);
 
-      return {
+      const completedSession = {
         ...prev,
         endTime: new Date().toISOString(),
         score: {
@@ -76,6 +116,39 @@ export function InterviewProvider({ children }) {
         },
         isComplete: true,
       };
+
+      // Add to history (keep last 10 sessions)
+      // Use a unique ID to prevent duplicates
+      const uniqueId = `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+      setSessionHistory((prevHistory) => {
+        // Check if this session already exists (prevent duplicates)
+        const sessionExists = prevHistory.some(
+          (session) =>
+            session.role === completedSession.role &&
+            session.startTime === completedSession.startTime &&
+            session.endTime === completedSession.endTime,
+        );
+
+        if (sessionExists) {
+          return prevHistory; // Don't add duplicate
+        }
+
+        const newHistory = [
+          {
+            id: uniqueId,
+            role: completedSession.role,
+            score: completedSession.score,
+            startTime: completedSession.startTime,
+            endTime: completedSession.endTime,
+          },
+          ...prevHistory,
+        ].slice(0, 10); // Keep only last 10 sessions
+
+        return newHistory;
+      });
+
+      return completedSession;
     });
   }, []);
 
@@ -107,13 +180,36 @@ export function InterviewProvider({ children }) {
     [interviewSession],
   );
 
+  /**
+   * Get recent session history
+   * @param {number} limit - Number of recent sessions to return
+   * @returns {Array} Recent sessions
+   */
+  const getRecentSessions = useCallback(
+    (limit = 3) => {
+      return sessionHistory.slice(0, limit);
+    },
+    [sessionHistory],
+  );
+
+  /**
+   * Clear all session history
+   */
+  const clearHistory = useCallback(() => {
+    setSessionHistory([]);
+    localStorage.removeItem(HISTORY_STORAGE_KEY);
+  }, []);
+
   const value = {
     session: interviewSession,
+    sessionHistory,
     startInterview,
     saveAnswer,
     finishInterview,
     resetInterview,
     isAnswerCorrect,
+    getRecentSessions,
+    clearHistory,
   };
 
   return (

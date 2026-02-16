@@ -1,26 +1,38 @@
 const blogPosts = [
   {
-    slug: 'ace-your-coding-interview',
-    title: 'Ace Your Coding Interview with These 5 Tips',
+    slug: 'ace-your-job-interview',
+    title: 'Ace Your Job Interview with These 5 Simple Tips',
     author: 'Lawrence Narh-Lawson',
     date: 'February 10, 2026',
     summary:
-      'Practical strategies to boost your performance during coding interviews, from problem breakdown to communication.',
+      'Five practical tips to help you prepare and feel confident for your next job interview.',
     content: `
-### 1. Understand the problem deeply
-Before writing code, rephrase the problem in your own words and walk through examples. Ask clarifying questions if anything is ambiguous.
 
-### 2. Share your thought process
-Interviewers aren’t just grading the final answer—they’re evaluating how you think. Talk through your approach as you code.
+Job interviews can feel intimidating, even for experienced professionals. The pressure to make a strong first impression while answering questions confidently can make anyone nervous. The good news is that interview success is rarely about being perfect — it’s about being prepared. Here are five practical tips to help you walk into your next interview feeling confident and ready.
 
-### 3. Start with a simple solution
-Get a brute‑force version working first, then refactor for efficiency. Early progress builds confidence and shows progress.
+### 1. Research the Company Properly
 
-### 4. Consider edge cases and test
-Think about empty inputs, large values, or invalid data. Write a few manual tests before submitting your solution.
+Before your interview, spend time understanding the company’s mission, values, and recent work. Look at their website, social media, and any recent news. This allows you to tailor your answers and demonstrate genuine interest. Employers notice when candidates clearly understand what the organisation does.
 
-### 5. Practice consistently
-Use platforms like LeetCode, HackerRank, or our own practice pages to build muscle memory. Regular practice reduces anxiety on the big day.
+### 2. Practice Your Answers (But Don’t Memorise Them)
+
+Prepare responses for common questions such as “Tell me about yourself” or “What are your strengths and weaknesses?” Focus on key points rather than scripts. Practising aloud helps you sound natural and confident instead of rehearsed.
+
+### 3. Use Real Examples
+
+Strong answers include evidence. Use specific examples from your past experience to show your skills in action. A simple structure like Situation, Task, Action, Result (STAR) can help keep your answers clear and focused.
+
+### 4. Prepare Questions to Ask
+
+Interviews are a two-way conversation. Asking thoughtful questions shows curiosity and engagement. You might ask about team culture, growth opportunities, or what success looks like in the role.
+
+### 5. Focus on Confidence, Not Perfection
+
+You don’t need to know everything. Employers are often looking for attitude, communication skills, and willingness to learn. Take a breath, speak clearly, and remember that the interview is also your chance to decide if the job suits you.
+
+### Final Thoughts
+
+Interviewing is a skill that improves with practice. Each interview is valuable experience, whether you get the role or not. Prepare well, stay authentic, and treat every conversation as an opportunity to learn and grow.
 `,
   },
   {

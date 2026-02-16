@@ -23,6 +23,11 @@ describe('BlogPostPage', () => {
     expect(screen.getByText(post.author)).toBeInTheDocument();
     expect(screen.getByText(post.date)).toBeInTheDocument();
     expect(screen.getByText(/Back to articles/i)).toBeInTheDocument();
+
+    // markdown content should render as HTML elements
+    expect(
+      screen.getByText(/Job interviews can feel intimidating/i),
+    ).toBeInTheDocument();
   });
 
   it('shows not found message for invalid slug', () => {

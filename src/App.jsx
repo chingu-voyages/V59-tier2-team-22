@@ -11,6 +11,8 @@ import FAQsPage from './pages/FAQsPage';
 import ContactUsPage from './pages/ContactUsPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
+import ChallengesPage from './pages/ChallengesPage';
+
 function App() {
   return (
     <AuthProvider>
@@ -20,16 +22,14 @@ function App() {
             <Routes>
               <Route path='/' element={<Layout />}>
                 <Route index element={<HomePage />} />
+                <Route path='blog' element={<BlogPage />} />
+                <Route path='blog/:slug' element={<BlogPostPage />} />{' '}
                 <Route path='roles' element={<RolesPage />} />
                 <Route path='faqs' element={<FAQsPage />} />
                 <Route path='contact-us' element={<ContactUsPage />} />
                 <Route path='summary' element={<SummaryPage />} />
-                <Route
-                  path='questions/:role'
-                  element={<QuestionsPage />}
-                />{' '}
-                <Route path='blog' element={<BlogPage />} />
-                <Route path='blog/:slug' element={<BlogPostPage />} />{' '}
+                <Route path='questions/:role' element={<QuestionsPage />} />
+                <Route path='challenges' element={<ChallengesPage />} />
               </Route>
             </Routes>
           </ChatProvider>
