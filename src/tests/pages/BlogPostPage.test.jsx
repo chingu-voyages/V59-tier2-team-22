@@ -20,7 +20,8 @@ describe('BlogPostPage', () => {
     renderWithSlug(post.slug);
 
     expect(screen.getByText(post.title)).toBeInTheDocument();
-    expect(screen.getByText(post.author)).toBeInTheDocument();
+    // author name may be split by whitespace when rendered
+    expect(screen.getByText(new RegExp(post.author, 'i'))).toBeInTheDocument();
     expect(screen.getByText(post.date)).toBeInTheDocument();
     expect(screen.getByText(/Back to articles/i)).toBeInTheDocument();
 
