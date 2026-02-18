@@ -91,19 +91,35 @@ The STAR method turns difficult interview questions into structured storytelling
     summary:
       'Tips on building relationships with recruiters to uncover opportunities and stand out in a competitive market.',
     image:
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80',
     content: `
-Here are a few tactics:
+**How to Network with Tech Recruiters Effectively**
 
-1. **Maintain an up‑to‑date LinkedIn profile.** Recruiters often search keywords, so include relevant skills and technologies.
+For many people trying to break into the tech industry, networking with recruiters can feel uncomfortable or transactional. In reality, good recruiter relationships are built the same way as any professional connection — through clarity, consistency, and mutual value. Here's how to approach networking with tech recruiters in a way that actually works.
 
-2. **Engage with content.** Comment on posts, share articles, and participate in discussions to stay visible.
+**1. Make Your Online Presence Clear and Focused**
 
-3. **Be responsive but selective.** Reply promptly to messages, but focus on roles that align with your goals.
+Before reaching out, make sure your LinkedIn profile and portfolio clearly show your skills, projects, and career direction. Recruiters scan profiles quickly, so highlight your tech stack, key projects, and what type of roles you're seeking. A clear profile makes it easier for recruiters to match you with opportunities.
 
-4. **Ask smart questions.** When speaking with a recruiter, ask about team culture, interview process, and expected timelines.
+**2. Reach Out with Purpose**
 
-Networking is a two‑way street—offer help when you can, and keep your communications professional.
+Avoid generic messages like "Hi, can you help me find a job?" Instead, introduce yourself briefly, mention your skills or experience, and explain what roles you're targeting. A short, specific message shows professionalism and respect for their time.
+
+**3. Treat Conversations Like Professional Relationships**
+
+Recruiters aren't just job gatekeepers — they're long-term industry contacts. Be polite, responsive, and honest about your experience level and availability. If you're early in your career, say so. Transparency builds trust.
+
+**4. Stay Visible Without Being Pushy**
+
+You don't need to message recruiters every week. Instead, stay visible by updating your profile, sharing projects, or posting learning progress occasionally. This keeps you on their radar without constant outreach.
+
+**5. Follow Up and Maintain the Connection**
+
+If a recruiter gives advice or arranges an interview, follow up with a short thank-you message. Even if a role doesn't work out, maintaining the relationship can lead to future opportunities.
+
+**Final Thoughts**
+
+Effective networking with tech recruiters isn't about asking for jobs — it's about building professional credibility over time. Focus on clear communication, genuine relationships, and consistent progress, and opportunities are far more likely to follow.
 `,
   },
 ];
