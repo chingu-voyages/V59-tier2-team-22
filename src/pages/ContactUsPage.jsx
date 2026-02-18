@@ -63,15 +63,15 @@ function ContactUsPage() {
                   href={member.github}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='p-2 rounded-full bg-gray-100 hover:bg-yellow-400 transition duration-200'>
-                  <Github size={20} className='text-gray-900' />
+                  className='p-3 rounded-full bg-gray-100 hover:bg-yellow-400 transition duration-200'>
+                  <Github size={28} className='text-gray-900' />
                 </a>
                 <a
                   href={member.linkedin}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='p-2 rounded-full bg-gray-100 hover:bg-yellow-400 transition duration-200'>
-                  <Linkedin size={20} className='text-gray-900' />
+                  className='p-3 rounded-full bg-gray-100 hover:bg-yellow-400 transition duration-200'>
+                  <Linkedin size={28} className='text-gray-900' />
                 </a>
               </div>
             </div>
