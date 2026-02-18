@@ -34,7 +34,7 @@ function BlogPostPage() {
       <p className='text-sm text-gray-500 mb-8'>
         {post.date} &middot; by {post.author}
       </p>
-      <div className='prose prose-lg text-gray-700'>
+      <div className='prose prose-lg text-gray-700 prose-li:mb-4 prose-ol:space-y-4 prose-ul:space-y-4'>
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {post.content}
         </ReactMarkdown>
