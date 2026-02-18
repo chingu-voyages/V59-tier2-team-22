@@ -6,14 +6,14 @@ function ContactUsPage() {
       id: 1,
       name: 'Ogechi Ogharandukun',
       role: 'Scrum Master',
-      github: 'https://github.com/ogechi-ogharandukun',
+      github: 'https://github.com/Mide02-Project',
       linkedin: 'https://www.linkedin.com/in/ogechi-ogharandukun/',
     },
     {
       id: 2,
       name: 'Peter Kabamba',
       role: 'Web Developer',
-      github: 'https://github.com/peter-kabamba',
+      github: 'https://github.com/Pietrols',
       linkedin: 'https://linkedin.com/in/peter-kabamba-959a061b9',
     },
     {
