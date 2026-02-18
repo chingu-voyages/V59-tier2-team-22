@@ -1,21 +1,26 @@
+import { Github, Linkedin } from 'lucide-react';
+
 function ContactUsPage() {
   const teamMembers = [
     {
       id: 1,
       name: 'Ogechi Ogharandukun',
       role: 'Scrum Master',
+      github: 'https://github.com/Mide02-Project',
       linkedin: 'https://www.linkedin.com/in/ogechi-ogharandukun/',
     },
     {
       id: 2,
       name: 'Peter Kabamba',
       role: 'Web Developer',
+      github: 'https://github.com/Pietrols',
       linkedin: 'https://linkedin.com/in/peter-kabamba-959a061b9',
     },
     {
       id: 3,
       name: 'Lawrence Narh-Lawson',
       role: 'Web Developer',
+      github: 'https://github.com/lawlawson',
       linkedin: 'https://www.linkedin.com/in/lawlawson/',
     },
   ];
@@ -39,12 +44,12 @@ function ContactUsPage() {
         {teamMembers.map((member) => (
           <div
             key={member.id}
-            className='bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-200 hover:border-yellow-400'>
+            className='bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-200 hover:border-yellow-400 w-72 h-80 flex flex-col'>
             {/* Member Card Background */}
             <div className='bg-linear-to-br from-yellow-400 to-yellow-300 h-24'></div>
 
             {/* Member Info */}
-            <div className='px-6 py-6 text-center'>
+            <div className='px-6 py-6 text-center flex flex-col justify-between grow'>
               <h3 className='text-xl font-bold text-gray-900 mb-2'>
                 {member.name}
               </h3>
@@ -52,14 +57,23 @@ function ContactUsPage() {
                 {member.role}
               </p>
 
-              {/* LinkedIn Button */}
-              <a
-                href={member.linkedin}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='inline-block px-6 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold hover:bg-yellow-500 transition duration-200 text-sm'>
-                Connect on LinkedIn
-              </a>
+              {/* Social Links */}
+              <div className='flex gap-4 justify-center mt-auto'>
+                <a
+                  href={member.github}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='p-3 rounded-full bg-gray-100 hover:bg-yellow-400 transition duration-200'>
+                  <Github size={28} className='text-gray-900' />
+                </a>
+                <a
+                  href={member.linkedin}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='p-3 rounded-full bg-gray-100 hover:bg-yellow-400 transition duration-200'>
+                  <Linkedin size={28} className='text-gray-900' />
+                </a>
+              </div>
             </div>
           </div>
         ))}
