@@ -49,7 +49,7 @@ function ContactUsPage() {
             <div className='bg-linear-to-br from-yellow-400 to-yellow-300 h-24'></div>
 
             {/* Member Info */}
-            <div className='px-6 py-6 text-center flex flex-col justify-between flex-grow'>
+            <div className='px-6 py-6 text-center flex flex-col justify-between grow'>
               <h3 className='text-xl font-bold text-gray-900 mb-2'>
                 {member.name}
               </h3>
