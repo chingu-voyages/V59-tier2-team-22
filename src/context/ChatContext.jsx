@@ -5,18 +5,18 @@ import {
   useCallback,
   useRef,
   useEffect,
-} from "react";
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import { useLocation } from "react-router";
-import { useInterview } from "./InterviewContext";
-import { useAuth } from "./AuthContext";
+} from 'react';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { useLocation } from 'react-router';
+import { useInterview } from './InterviewContext';
+import { useAuth } from './AuthContext';
 
 const ChatContext = createContext(null);
 
 // Rate limiting: 10 messages per minute
 const RATE_LIMIT = 50;
 const RATE_LIMIT_WINDOW = 60000; // 1 minute in milliseconds
-const STORAGE_KEY = "interviewflow_chat_history";
+const STORAGE_KEY = 'interviewflow_chat_history';
 
 export function ChatProvider({ children }) {
   const [messages, setMessages] = useState([]);
@@ -38,12 +38,12 @@ export function ChatProvider({ children }) {
         const parsed = JSON.parse(savedHistory);
         setMessages(parsed);
       } catch (error) {
-        console.error("Failed to load chat history:", error);
+        console.error('Failed to load chat history:', error);
         // Set welcome message if loading fails
         setMessages([
           {
             id: 1,
-            role: "assistant",
+            role: 'assistant',
             content:
               "Hi! I'm your InterviewFlow assistant. Ask me about navigation or get hints for questions!",
             timestamp: new Date().toISOString(),
@@ -55,7 +55,7 @@ export function ChatProvider({ children }) {
       setMessages([
         {
           id: 1,
-          role: "assistant",
+          role: 'assistant',
           content:
             "Hi! I'm your InterviewFlow assistant. Ask me about navigation or get hints for questions!",
           timestamp: new Date().toISOString(),
@@ -77,7 +77,7 @@ export function ChatProvider({ children }) {
       // User logged out - reset chat
       const welcomeMessage = {
         id: Date.now(),
-        role: "assistant",
+        role: 'assistant',
         content:
           "Hi! I'm your InterviewFlow assistant. Ask me about navigation or get hints for questions!",
         timestamp: new Date().toISOString(),
@@ -92,11 +92,11 @@ export function ChatProvider({ children }) {
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
     if (!apiKey) {
       throw new Error(
-        "Gemini API key not found. Please add VITE_GEMINI_API_KEY to your .env file.",
+        'Gemini API key not found. Please add VITE_GEMINI_API_KEY to your .env file.',
       );
     }
     const genAI = new GoogleGenerativeAI(apiKey);
-    return genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
+    return genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' });
   }, []);
 
   // Check rate limit
@@ -123,15 +123,15 @@ export function ChatProvider({ children }) {
     let context = `Current page: ${currentPath}\n`;
 
     // Add authentication status
-    context += `User authenticated: ${isAuthenticated ? "Yes" : "No"}\n`;
+    context += `User authenticated: ${isAuthenticated ? 'Yes' : 'No'}\n`;
 
     // Add page-specific context
-    if (currentPath === "/") {
-      context += "User is on the home page.\n";
-    } else if (currentPath === "/roles") {
-      context += "User is on the roles selection page.\n";
-    } else if (currentPath.startsWith("/questions/")) {
-      const role = decodeURIComponent(currentPath.split("/questions/")[1]);
+    if (currentPath === '/') {
+      context += 'User is on the home page.\n';
+    } else if (currentPath === '/roles') {
+      context += 'User is on the roles selection page.\n';
+    } else if (currentPath.startsWith('/questions/')) {
+      const role = decodeURIComponent(currentPath.split('/questions/')[1]);
       context += `User is practicing interview questions for role: ${role}\n`;
 
       if (session && session.questions) {
@@ -139,22 +139,22 @@ export function ChatProvider({ children }) {
         context += `Questions answered: ${Object.keys(session.answers).length}\n`;
 
         // Add all questions (without answers) for reference
-        context += "\nAvailable questions in this session:\n";
+        context += '\nAvailable questions in this session:\n';
         session.questions.forEach((q, idx) => {
           context += `Question ${idx + 1}: ${q.question}\n`;
         });
       }
-    } else if (currentPath === "/summary") {
-      context += "User is viewing their interview summary/results.\n";
+    } else if (currentPath === '/summary') {
+      context += 'User is viewing their interview summary/results.\n';
       if (session && session.score) {
         context += `Score: ${session.score.percentage}%\n`;
       }
-    } else if (currentPath === "/blog") {
-      context += "User is on the blog page.\n";
-    } else if (currentPath === "/faq") {
-      context += "User is on the FAQ page.\n";
-    } else if (currentPath === "/contact") {
-      context += "User is on the contact page.\n";
+    } else if (currentPath.startsWith('/blog')) {
+      context += 'User is on the blog page or viewing a post.\n';
+    } else if (currentPath === '/faq') {
+      context += 'User is on the FAQ page.\n';
+    } else if (currentPath === '/contact') {
+      context += 'User is on the contact page.\n';
     }
 
     return context;
@@ -214,9 +214,9 @@ Remember: You guide, you don't solve. You teach, you don't tell answers.`;
       if (!checkRateLimit()) {
         const errorMessage = {
           id: Date.now(),
-          role: "assistant",
+          role: 'assistant',
           content:
-            "Please wait a moment before sending another message. I need a brief rest to process your requests thoughtfully.",
+            'Please wait a moment before sending another message. I need a brief rest to process your requests thoughtfully.',
           timestamp: new Date().toISOString(),
         };
         setMessages((prev) => [...prev, errorMessage]);
@@ -226,7 +226,7 @@ Remember: You guide, you don't solve. You teach, you don't tell answers.`;
       // Add user message
       const newUserMessage = {
         id: Date.now(),
-        role: "user",
+        role: 'user',
         content: userMessage,
         timestamp: new Date().toISOString(),
       };
@@ -246,9 +246,9 @@ Remember: You guide, you don't solve. You teach, you don't tell answers.`;
           .slice(-2)
           .map(
             (msg) =>
-              `${msg.role === "user" ? "User" : "Assistant"}: ${msg.content}`,
+              `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`,
           )
-          .join("\n\n");
+          .join('\n\n');
 
         const fullPrompt = `${getSystemPrompt()}
 
@@ -265,25 +265,25 @@ Provide a helpful response based on the above context and conversation.`;
         // Add AI response
         const aiMessage = {
           id: Date.now() + 1,
-          role: "assistant",
+          role: 'assistant',
           content: aiResponse,
           timestamp: new Date().toISOString(),
         };
 
         setMessages((prev) => [...prev, aiMessage]);
       } catch (error) {
-        console.error("AI Error:", error);
+        console.error('AI Error:', error);
 
         let errorContent =
           "I'm currently unavailable. The chatbot is sleeping right now. Please try again later.";
 
         // Handle specific error types
-        if (error.message?.includes("API key")) {
+        if (error.message?.includes('API key')) {
           errorContent =
-            "Configuration error. Please ensure the API key is properly set up.";
+            'Configuration error. Please ensure the API key is properly set up.';
         } else if (
-          error.message?.includes("quota") ||
-          error.message?.includes("rate")
+          error.message?.includes('quota') ||
+          error.message?.includes('rate')
         ) {
           errorContent =
             "I've reached my daily limit. The chatbot is sleeping for now. Please try again tomorrow.";
@@ -291,7 +291,7 @@ Provide a helpful response based on the above context and conversation.`;
 
         const errorMessage = {
           id: Date.now() + 1,
-          role: "assistant",
+          role: 'assistant',
           content: errorContent,
           timestamp: new Date().toISOString(),
         };
@@ -313,7 +313,7 @@ Provide a helpful response based on the above context and conversation.`;
   const clearChat = useCallback(() => {
     const welcomeMessage = {
       id: Date.now(),
-      role: "assistant",
+      role: 'assistant',
       content:
         "Hi! I'm your InterviewFlow assistant. Ask me about navigation or get hints for questions!",
       timestamp: new Date().toISOString(),
@@ -339,7 +339,7 @@ export function useChat() {
   const context = useContext(ChatContext);
 
   if (!context) {
-    throw new Error("useChat must be used within ChatProvider");
+    throw new Error('useChat must be used within ChatProvider');
   }
 
   return context;
